@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 from tkinter import ttk
 
 
-class JIGZInterface:
+class JIGZInterface: 
     def __init__(self, master):
         self.master = master
         master.title("JIGZ MANUTENÇÃO")
