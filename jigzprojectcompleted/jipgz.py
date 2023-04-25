@@ -44,11 +44,8 @@ class JIGZInterface:
         if not self.connected:
             self.device_status_text.set("Erro: porta serial não está conectada")
             return    
-Aqui está a segunda parte do código:
 
-python
-Copy code
-        # Configura a porta serial
+        # Configura a porta serial 
         self.ser = serial.Serial()
         self.ser.baudrate = 9600
         self.ser.port = 'COM4'
@@ -62,4 +59,8 @@ Copy code
             messagebox.showerror("Erro", f"Não foi possível abrir a porta serial: {str(e)}")
         
         # Envia o comando para o dispositivo
-        command = f"
+        command = f"status,{device_id}"
+        self.ser.write(command.encode())
+        response = self.ser.readline().decode().strip()
+        self.device_status_text.set(response)
+
